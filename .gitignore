@@ -1,0 +1,6 @@
+/environment.php
+/web_migrate.php
+/phinx.yml
+/assets/js/env.js
+/env.js
+*.sql

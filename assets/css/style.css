@@ -1,0 +1,107 @@
+.color-red{
+  color:red;
+}
+
+.input-error{
+  border:1px solid red;
+}
+
+.cash_transaction_forms input {
+    width: 100% !important;
+    position: relative;
+}
+
+.numerals-disp-block {
+    color: #444;
+    font-weight: bold;
+    background: #ccc;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.custom-error-msg {
+    background: red;
+    color: #fff;
+    padding: 4px;
+}
+
+.full-width{
+  width:100%;
+}
+
+.ge-entry-edit-panel.color-red {
+    background: #8d0404;
+}
+
+a.no-decoration{
+
+    text-decoration: none !important
+}
+.ge-entry-edit-panel {
+    background: #222222;
+    color: #fff;
+    padding: 23px;
+    border-radius: 11px;
+    margin-bottom: 5px
+}
+
+.custom-error-msg{
+  display: none;
+}
+
+@page { size: auto;  margin: 0mm; }
+
+table.dataTable tfoot{
+	display: table-row-group;
+}
+
+table.dataTable tfoot th {
+    padding: 0px 0px 0px 0px;
+    border-top: 0px;
+    font-weight: bold;
+}
+table.dataTable tfoot th input {
+	height: 28px;
+	border: none !important;
+	border-radius: 0px !important;
+	font-size: 12px !important;
+	padding: 0px 0px 0px 4px;
+}
+
+.report-gen-form{
+  text-align: right;
+    padding-top: 12px;
+}
+.report-gen-form button{
+  margin-top: 6px;
+}
+
+.child-entries{
+  background: #D7D7D7;
+  font-size: 1em;
+}
+.child-entries td{
+  border: #606060;
+}
+
+.center-wide-btn {
+    padding-left: 67px;
+    padding-right: 67px;
+    font-size: 17px;
+}
+#journal-entry-tbl td{
+  
+    padding: 2px !important
+  
+}
+
+
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
