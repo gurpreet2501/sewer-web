@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','Tank_auth','rate_contracts','grocery_CRUD');
+$autoload['libraries'] = array('database','Tank_auth','grocery_CRUD');
 /*
 | -------------------------------------------------------------------
 |  Auto-load Drivers
@@ -88,7 +88,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('security','auth','url','my_html','messages','gate_entry','vue', 'global','user_access','labor_payments','gate_entry_diff');
+$autoload['helper'] = array('security','auth','url','my_html','messages','vue', 'global','user_access');
 
 /*
 | -------------------------------------------------------------------

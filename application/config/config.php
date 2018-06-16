@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['auto_logout'] = false;
 
-$config['base_url'] = env('base_url','http://navdanya.xyz/mis');
+$config['base_url'] = env('base_url','http://sewer-web.com');
 
 // Set value false to make fields readonly. (i.e. Uneditable)
 // $config['allow_common_field_edit'] = [
@@ -37,103 +37,14 @@ $config['base_url'] = env('base_url','http://navdanya.xyz/mis');
 
 $config['allow_common_field_editing'] = env('allow_common_field_editing', false);
 
-$config['gate_entry_data_modules'] = [
-	'stock_item_types' => 'Stock Items',
-	'bag_types' => 'Bag Type',
-	'quality_cut' => 'Quality Cut',
-	'godown_and_labour_allocation' => 'Godown & Labour Allocation',
-	'godown_material_qc_labour_allocation' => 'Godown Material QC Labour Allocation',
-	'cmr_details' => 'CMR Details',
-	'cmr_rice_delivery_details' => 'CMR Rice Delievery Details'
-];
-
-$config['required_inputs'] = [
-	'stock_item_types' => [
-		'stock_group' => 1,
-		'job_categories' => 0,
-		'quality_cut_types' => 0,
-		'stock_items' => 0
-	],
-	'bag_types' => [
-		'stock_group' => 0,
-		'job_categories' => 0,
-		'quality_cut_types' => 0,
-		'stock_items' => 1
-	],
-	'quality_cut' => [
-		'stock_group' => 0,
-		'job_categories' => 0,
-		'quality_cut_types' => 1,
-		'stock_items' => 0
-	],
-	'godown_and_labour_allocation' => [
-		'stock_group' => 0,
-		'job_categories' => 1,
-		'quality_cut_types' => 0,
-		'stock_items' => 0
-	],
-	'godown_material_qc_labour_allocation' => [
-		'stock_group' => 1,
-		'job_categories' => 1,
-		'quality_cut_types' => 0,
-		'stock_items' => 0
-	],
-	'cmr_details' => [
-		'stock_group' => 0,
-		'job_categories' => 0,
-		'quality_cut_types' => 0,
-		'stock_items' => 0
-	],
-	'cmr_rice_delivery_details' =>[
-		'stock_group' => 0,
-		'job_categories' => 0,
-		'quality_cut_types' => 0,
-		'stock_items' => 0
-	]
-];
-
-
-
 $config['menu_access'] = [
     
-    'gate_entry' => [
-				'gate_entry' => 'gate_pass/index',
-    ],
+    
 
 	  'data_management' => [
-				'accounts' => 'data/accounts',
-				'stock_groups' => 'data/stockGroups',
-				'stock_items' => 'data/stockItems',
-				'quality_cut_types' => 'data/qualityCutTypes',
-				'forms' => 'data/forms',
-				'rate_contracts' => 'manager_dashboard/rate_contracts',
-				'daily_labour_accounts' => 'data/dailyLabourAccounts',
-				'labour_job_categories' => 'data/labour_job_categories',
-				'labour_job_types' => 'data/labour_job_types',
-				'labour_job_rates' => 'data/labour_job_rates', 
-				'labour_parties' => 'labour_party/show_list',
-				'rate_entry' => 'data/rateEntry',
-				'cmr_markets' => 'manager_dashboard/cmr_markets',
-				'cmr_details' => 'data/cmrDetails',
-				'cmr_agencies' => 'data/cmr_agencies',
-				'cmr_society' => 'data/cmr_society',
-				'bag_weights' => 'data/bag_weights',
-				'journal_entry' => 'journal_entry/addTransaction',
-        'chrome_weight_id' => 'options/chrome_weight_app_id',
 	  ],
 
 	  'manager_dashboard' => [
-			'machinery_parts' => 'manager_dashboard/machinery_parts',
-			'cmr_rice_quality_report' => 'manager_dashboard/cmr_rice_quality_report',
-			// 'sales_report' => 'data/sales_gate_entries',
-			// 'purchase_report' => 'data/purchase_gate_entries',
-			'sales_report' => 'data/sale_purchase_gate_entries/?entry_type=OUT',
-			'purchase_report' => 'data/sale_purchase_gate_entries?entry_type=IN',
-			'bran_quality_report' => 'manager_dashboard/bran_quality_report',
-			'purchase_daily_report' => 'manager_dashboard/purchase_daily_report',
-			'transactions_report' => 'manager_dashboard/transactions_report_generator',
-			'profit_loss_report' => 'manager_dashboard/profit_loss_report_generator',
-			'entries_difference' => 'manager_dashboard/all_gate_entry_changes',
 	  ],
 
 	  'user_management' => [

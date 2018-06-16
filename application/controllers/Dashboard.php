@@ -13,21 +13,22 @@ class Dashboard extends CI_Controller
 
 	function index()
 	{
-		$obj = new ApiClient();
+		// $obj = new ApiClient();
 	
-		$test  =  $obj->reset() 
-                        ->set('object', 'user')
-                        ->set('api', 'login')
-                        ->set('data',[
-                        	'email' => 'waheguru@mera.com',
-                        	'password' => 'C@ash2add'
-                        ])
-                        ->exec();  
+		// $test  =  $obj->reset() 
+  //                       ->set('object', 'user')
+  //                       ->set('api', 'login')
+  //                       ->set('data',[
+  //                       	'email' => 'waheguru@mera.com',
+  //                       	'password' => 'C@ash2add',
+  //                       	'device_id'
+  //                       ])
+  //                       ->exec();  
 
-              echo "<pre>";
-                        print_r($test);
-                        exit;          
-		$this->load->view('dashboard', $data);
+  //             echo "<pre>";
+  //                       print_r($test);
+  //                       exit;          
+		$this->load->view('dashboard');
 	}
 }
 

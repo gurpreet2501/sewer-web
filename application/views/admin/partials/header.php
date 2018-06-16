@@ -82,12 +82,8 @@ a:hover
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <?php
-                 if(user_role() == 'admin')
+                 if(user_role() == 'ADMIN')
                     $this->load->view('admin/partials/menu-admin');
-                  else if(user_role() == 'operator')
-                    $this->load->view('admin/partials/menu-operator');
-                  else if(user_role() == 'manager')
-                    $this->load->view('admin/partials/menu-manager');
                   /*else
                     $this->load->view('admin/partials/menu-operator');
                    */ 

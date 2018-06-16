@@ -10,30 +10,8 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-<?php 
-  
-  $chrome_id_value = '';
-  $chrome_id_record = Models\Options::where('key', 'chrome_weight_app_id')->first();
-  if (!is_null($chrome_id_record) && user_role() == 'admin') {
-    $chrome_id_value =  $chrome_id_record->value;
-  }
-?>
-<?php $cacheVer = $this->config->item('cache_version'); ?> 
-  <script>
-      window._options = {
-        CHROME_WEIGHT_APP_ID: "<?=$chrome_id_value?>"
-      };
 
-      window.for_js = {};
-      <?php if(isset($for_js)): ?> 
-        window.for_js = <?=json_encode($for_js)?>; 
-      <?php endif; ?>
-      function v(key,_default){
-        if(window.for_js[key])
-          return window.for_js[key];
-        return _default;
-      }
-  </script>
+
  <script src="<?=base_url('env.js?v='.$cacheVer);?>"></script> 
  <script src="<?=base_url('assets/js/env-support.js?v='.$cacheVer);?>"></script> 
 
@@ -48,9 +26,7 @@
 
  <script type="text/javascript" src="<?=base_url('assets/js/jquery-validate.js?v='.$cacheVer)?>"></script>
 
- <script type="text/javascript" src="<?=base_url('assets/js/INRFormat.js?v='.$cacheVer)?>"></script>
  <script type="text/javascript" src="<?=base_url('assets/js/vue.min.js?v='.$cacheVer)?>"></script>
- <script type="text/javascript" src="<?=base_url('assets/js/bugmuncher.js?v='.$cacheVer)?>"></script>
  <script type="text/javascript" src="<?=base_url('assets/js/vue-select.js?v='.$cacheVer)?>"></script>
  <script type="text/javascript" src="<?=base_url('assets/js/app.js?v='.$cacheVer)?>"></script>
  <script type="text/javascript" src="<?=base_url('assets/js/vex.combined.min.js?v='.$cacheVer)?>"></script>
