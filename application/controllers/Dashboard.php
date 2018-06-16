@@ -13,22 +13,31 @@ class Dashboard extends CI_Controller
 
 	function index()
 	{
-		// $obj = new ApiClient();
+		$obj = new ApiClient();
+	  $session = Models\UserSessions::where('user_id',user_id())->first();
+	 
+	 if(empty($session))
+	 	return('auth/logout');
 	
-		// $test  =  $obj->reset() 
-  //                       ->set('object', 'user')
-  //                       ->set('api', 'login')
-  //                       ->set('data',[
-  //                       	'email' => 'waheguru@mera.com',
-  //                       	'password' => 'C@ash2add',
-  //                       	'device_id'
-  //                       ])
-  //                       ->exec();  
 
-  //             echo "<pre>";
-  //                       print_r($test);
-  //                       exit;          
-		$this->load->view('dashboard');
+		$resp  =  $obj->reset() 
+                        ->set('object', 'machine')
+                        ->set('api', 'view')
+                        ->set('data',[
+                        	'token' => $session->token,
+                        	'type' => 'GAS'
+                        ])
+                        ->exec();  
+
+    if(!$resp->success()) {
+    	failure('Something wrong happened');
+    	redirect('dashboard/index');
+    }
+
+
+		$this->load->view('dashboard',[
+			'data' => $resp->response()
+		]);
 	}
 }
 
