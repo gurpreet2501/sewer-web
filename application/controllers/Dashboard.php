@@ -42,6 +42,7 @@ class Dashboard extends CI_Controller
     
     $jsFiles = [
 			base_url('assets/js/components/datepicker.js'),
+			base_url('assets/js/loadingoverlay.min.js'),
 			base_url('assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.js'),
 			base_url('assets/js/machine-btns-toggling.js'),
 		];
