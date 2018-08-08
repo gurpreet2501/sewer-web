@@ -89,7 +89,48 @@ class Machine extends CI_Controller
 
 	   
 
-	}
+	} /*button status update*/
+
+	function block()
+	{
+		
+		if(empty($_POST))
+			return;
+		
+		$machine_blocked_status = $_POST['machine_blocked_status'];
+		
+		$obj = new ApiClient();
+		$machine = Models\Machines::where('id',$_POST['machine_id'])->first();
+		$machine_serial = trim($machine->machine_serial);
+		$machine_blocked_status = ($machine_blocked_status) ? 1 :0; 	
+		
+		try{
+
+		$resp  =  $obj->reset() 
+                        ->set('object', 'machine')
+                        ->set('api', 'block')
+                        ->set('data',[
+                        	'machine_serial' => $machine_serial,
+                        	'token' => get_sessions_token(),
+                        ])
+                        ->exec();  
+
+			if(!$resp->success()){
+				echo false;
+				return;
+			}
+			
+			echo json_encode(true);
+
+    }catch(Exception $e){
+    		echo false;
+				return;
+    }
+
+	   
+
+	} /*button status update*/
+
 }
 
 /* End of file welcome.php */

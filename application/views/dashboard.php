@@ -75,7 +75,7 @@
 						
 				</td>
 				<td  align="center">
-					<input class="machine_blocked_status" data-on="Unblocked" data-off="Blocked" data-onstyle="success" data-offstyle="danger" 
+					<input class="machine_blocked_status" data-machine-id="<?=$item->id?>" data-on="Unblocked" data-off="Blocked" data-onstyle="success" data-offstyle="danger" 
 					<?=($item->blocked == 0) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
 				</td>
 			</tr>
