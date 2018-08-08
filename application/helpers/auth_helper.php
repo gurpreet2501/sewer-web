@@ -52,6 +52,11 @@ function user_id(){
   $ci=get_instance();
   return $ci->tank_auth->get_user_id();
 }
+
+function get_sessions_token(){
+  $ci=get_instance();
+  return $ci->tank_auth->get_user_session_token();
+}
 function getUsername(){
 	$ci=get_instance();
   return $ci->tank_auth->get_username();

@@ -11,6 +11,7 @@
   <link href="<?=base_url('assets/css/select2.css?v='.$cacheVer)?>" rel="stylesheet">
   <link href="<?=base_url('assets/css/vex-theme-os.css?v='.$cacheVer)?>" rel="stylesheet">
  <link href="<?=base_url('assets/css/print.css?v='.$cacheVer)?>" rel="stylesheet">
+ <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <?php 
 if(isset($css_files)){
     foreach($css_files as $file): ?>

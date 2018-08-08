@@ -149,6 +149,14 @@ class Tank_auth
 		return $this->ci->session->userdata('username');
 	}
 
+	function get_user_session_token(){
+		 $session = Models\UserSessions::where('user_id',user_id())->first();
+	
+	 if(empty($session))
+	 	return('auth/logout');
+
+	  return $session->token;
+	}
 	/**
 	 * Create new user on the site and return some data about it:
 	 * user_id, username, password, email, new_email_key (if any).

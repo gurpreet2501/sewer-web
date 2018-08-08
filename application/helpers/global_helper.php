@@ -32,6 +32,8 @@ function getGodownName($id){
 		return $godown->name;
 }
 
+
+
 /**
  * @param id (integer) 
  */
@@ -55,21 +57,20 @@ function getLaboutJobTypeName($id){
 
 
 function pagination_params($data){
-	
-	if(!is_array($data))
-		$data = $data->toArray();
 
-	preg_match_all('!\d+!', $data['next_page_url'], $next_page);
-	preg_match_all('!\d+!', $data['prev_page_url'], $previous_page);
-	
+	$data->next_page_url = str_replace('http://sewerage-api.com/v1?page=', '', $data->next_page_url);
+	preg_match_all('!\d+!', $data->next_page_url, $next_page);
+	if($data->current_page>1)
+		$previous_page = $data->current_page-1;
+	else
+		$previous_page = null;
+
   return [
-		'last_page' => $data['last_page'],
+		'last_page' => $data->last_page,
+		'current_page' => $data->current_page,
 		'next_page' => isset($next_page[0][0]) ? $next_page[0][0] : '',
-		'previous_page' => isset($previous_page[0][0]) ? $previous_page[0][0] : '',
-		'current_page' => $data['current_page'],
-		'next_page_url' => $data['next_page_url'],
-		'previous_page_url' => $data['prev_page_url'],
-		'total_results' => $data['total'],
+		'previous_page' => $previous_page,
+		'total_results' => $data->total,
 	];
 
 

@@ -10,12 +10,14 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-
+<?php $cacheVer = rand(1,1000)*2 ?>
 
  <script src="<?=base_url('env.js?v='.$cacheVer);?>"></script> 
  <script src="<?=base_url('assets/js/env-support.js?v='.$cacheVer);?>"></script> 
+ 
 
  <script src="<?=base_url('assets/js/jquery.js?v='.$cacheVer);?>"></script>
+ <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
  
  <script src="<?=base_url('assets/js/mousetrap.min.js?v='.$cacheVer);?>"></script>
  <script src="<?=base_url('assets/js/ctrl-q-click.js?v='.$cacheVer);?>"></script>
