@@ -8,12 +8,12 @@ jQuery(function(){
      if(isEnabled)
      		machine_status = 1; 
 
-     var machine_id = $(this).attr('data-machine-id');
+     var machine_serial = $(this).attr('data-machine-serial');
      var url = window.getBaseUrl();
 	     $.ajax({
 			  type: "POST",
 			  url: url+'/machine/status_update',
-			  data: {machine_id:machine_id,machine_status:machine_status},
+			  data: {machine_serial:machine_serial,machine_status:machine_status},
 			  success: function(data){
 
 			  	data = JSON.parse(data);
@@ -35,12 +35,12 @@ jQuery(function(){
      if(isEnabled)
      		button_status = 1; 
 
-     var machine_id = $(this).attr('data-machine-id');
+     var machine_serial = $(this).attr('data-machine-serial');
      var url = window.getBaseUrl();
 	     $.ajax({
 			  type: "POST",
 			  url: url+'/machine/button_status_update',
-			  data: {machine_id:machine_id,button_status:button_status},
+			  data: {machine_serial:machine_serial,button_status:button_status},
 			  success: function(data){
 
 			  	data = JSON.parse(data);
@@ -63,16 +63,14 @@ jQuery(function(){
      if(isEnabled)
      		machine_blocked_status = 1; 
 
-     var machine_id = $(this).attr('data-machine-id');
+     var machine_serial = $(this).attr('data-machine-serial');
      var url = window.getBaseUrl();
 	     $.ajax({
 			  type: "POST",
 			  url: url+'/machine/block',
-			  data: {machine_id:machine_id,machine_blocked_status:machine_blocked_status},
+			  data: {machine_serial:machine_serial,machine_blocked_status:machine_blocked_status},
 			  success: function(data){
-
 			  	data = JSON.parse(data);
-			  	
 			  	if(!data)
 			  		alert('Unable to change button status');
 			  	$.LoadingOverlay("hide");

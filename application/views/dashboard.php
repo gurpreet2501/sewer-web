@@ -66,16 +66,16 @@
 				<td align="center"><?=ucwords($item->machine_serial)?></td>
 				<td align="center"><?=$item->machine_name?></td>
 				<td align="center">
-					<input data-machine-id="<?=$item->id?>" id="machine_status_<?=$key?>" class="machine_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 
+					<input data-machine-serial="<?=trim($item->machine_serial)?>" id="machine_status_<?=$key?>" class="machine_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 
 						<?=($item->status ==1) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
 				</td>
 				<td  align="center">
-					<input data-machine-id="<?=$item->id?>" id="button_status_<?=$key?>" class="button_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 
+					<input data-machine-serial="<?=trim($item->machine_serial)?>" id="button_status_<?=$key?>" class="button_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 
 					<?=($item->button_status ==1) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
 						
 				</td>
 				<td  align="center">
-					<input class="machine_blocked_status" data-machine-id="<?=$item->id?>" data-on="Unblocked" data-off="Blocked" data-onstyle="success" data-offstyle="danger" 
+					<input class="machine_blocked_status" data-machine-serial="<?=trim($item->machine_serial)?>" data-on="Unblocked" data-off="Blocked" data-onstyle="success" data-offstyle="danger" 
 					<?=($item->blocked == 0) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
 				</td>
 			</tr>

@@ -20,8 +20,8 @@ class Machine extends CI_Controller
 		$machine_status = $_POST['machine_status'];
 		
 		$obj = new ApiClient();
-		$machine = Models\Machines::where('id',$_POST['machine_id'])->first();
-		$machine_serial = trim($machine->machine_serial);
+		// $machine = Models\Machines::where('id',$_POST['machine_id'])->first();
+		$machine_serial = trim($_POST['machine_serial']);
 		$machine_status = ($machine_status) ? 1 :0; 	
 		
 		try{
@@ -60,8 +60,7 @@ class Machine extends CI_Controller
 		$button_status = $_POST['button_status'];
 		
 		$obj = new ApiClient();
-		$machine = Models\Machines::where('id',$_POST['machine_id'])->first();
-		$machine_serial = trim($machine->machine_serial);
+		$machine_serial = trim($_POST['machine_serial']);
 		$button_status = ($button_status) ? 1 :0; 	
 		
 		try{
@@ -100,27 +99,44 @@ class Machine extends CI_Controller
 		$machine_blocked_status = $_POST['machine_blocked_status'];
 		
 		$obj = new ApiClient();
-		$machine = Models\Machines::where('id',$_POST['machine_id'])->first();
-		$machine_serial = trim($machine->machine_serial);
+		$machine_serial = trim($_POST['machine_serial']);
 		$machine_blocked_status = ($machine_blocked_status) ? 1 :0; 	
 		
 		try{
-
-		$resp  =  $obj->reset() 
+			
+			if(!$machine_blocked_status){
+				$resp  =  $obj->reset() 
                         ->set('object', 'machine')
                         ->set('api', 'block')
                         ->set('data',[
                         	'machine_serial' => $machine_serial,
-                        	'token' => get_sessions_token(),
+                        	'token' => get_sessions_token()
                         ])
                         ->exec();  
-
-			if(!$resp->success()){
-				echo false;
-				return;
-			}
+                      
+					if(!$resp->success()){
+						echo false;
+						return;
+					}
 			
-			echo json_encode(true);
+			}else{
+				$resp  =  $obj->reset() 
+                        ->set('object', 'machine')
+                        ->set('api', 'unblock')
+                        ->set('data',[
+                        	'machine_serial' => $machine_serial,
+                        	'token' => get_sessions_token()
+                        ])
+                        ->exec();  
+                      
+					if(!$resp->success()){
+						echo false;
+						return;
+					}	
+			}
+
+
+		 echo json_encode(true);
 
     }catch(Exception $e){
     		echo false;
