@@ -70,7 +70,7 @@
 						<?=($item->status ==1) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
 				</td>
 				<td  align="center">
-					<input  class="button_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 
+					<input data-machine-id="<?=$item->id?>" id="button_status_<?=$key?>" class="button_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 
 					<?=($item->button_status ==1) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
 						
 				</td>
