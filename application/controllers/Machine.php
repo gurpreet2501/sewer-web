@@ -10,6 +10,28 @@ class Machine extends CI_Controller
 		$this->load->helper('url');
 		$this->load->library('tank_auth');
 	}
+	
+	function details($id){
+			$obj = new ApiClient();
+			$resp  =  $obj->reset() 
+                ->set('object', 'machine')
+                ->set('api', 'details')
+                ->set('data',[
+                	'token' => get_sessions_token(),
+                	'machine_id' => $id,
+                ])
+                ->exec();  
+          echo "<pre>";
+          print_r($resp);
+          exit;
+    if(!$resp->success()) {
+    	failure('Something wrong happened');
+    	redirect('dashboard/index');
+    }
+		echo "<pre>";
+		print_r($id);
+		exit;
+	}
 
 	function status_update()
 	{

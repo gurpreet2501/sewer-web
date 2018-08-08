@@ -58,7 +58,7 @@ function getLaboutJobTypeName($id){
 
 function pagination_params($data){
 
-	$data->next_page_url = str_replace('http://sewerage-api.com/v1?page=', '', $data->next_page_url);
+	$data->next_page_url = str_replace(env('api_url','http://sewerage-api.com/v1?page='), '', $data->next_page_url);
 	preg_match_all('!\d+!', $data->next_page_url, $next_page);
 	if($data->current_page>1)
 		$previous_page = $data->current_page-1;

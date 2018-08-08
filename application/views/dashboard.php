@@ -63,7 +63,7 @@
 		 		</tr>
 		<?php foreach ($data->data as $key => $item):?>
 			<tr>
-				<td align="center"><?=ucwords($item->machine_serial)?></td>
+				<td align="center"><a href="<?=site_url('machine/details/'.$item->id)?>"><?=ucwords($item->machine_serial)?></a></td>
 				<td align="center"><?=$item->machine_name?></td>
 				<td align="center">
 					<input data-machine-serial="<?=trim($item->machine_serial)?>" id="machine_status_<?=$key?>" class="machine_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 

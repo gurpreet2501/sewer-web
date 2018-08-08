@@ -15,7 +15,6 @@ class Dashboard extends CI_Controller
 	{
 		$obj = new ApiClient();
 
-
 	  $filters = [
 	  	'from_date' => date('Y-m-d 00:00:00'),
 	  	'to_date' => date('Y-m-d 23:59:59'),
