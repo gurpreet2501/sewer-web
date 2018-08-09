@@ -3,31 +3,22 @@
 <div class="row">
 	<div class="col-md-12">
 		  <div class='filters'>
-		    <form class="form-inline" method="post">
-		       <div class="form-group">
-		          <label class="sr-only" for="from">From Date</label>
-		          <input type='text' name='filters[from_date]' id='from' value="" class="form-control _datepicker col-sm-2 date-input" placeholder="From Date" value='' />
-		        </div>
-		      
+		    <form class="form-inline" method="get">
 		        <div class="form-group">
-		          <label class="sr-only" for="to">To Date</label>
-		          <input type='text' name='filters[to_date]' id='to' value="" class="form-control _datepicker col-sm-2 date-input" placeholder='To date'
-		          value='' />
-		        </div>
-
-		        <div class="form-group">
+		        	<label>Machine Status</label>
 		          <select name="filters[machine_type]" class="form-control chosen-select">
 		            <option disabled="true" selected="true">Select Machine Type</option>
-		            <option value="ALL">All</option>
-		            <option value="GAS">GAS</option>
-		            <option value="SEWERAGE">SEWERAGE</option>
+		            <option <?=$filters['machine_type'] == 'ALL' ? 'selected' : ''?> value="ALL">ALL</option> 
+		            <option <?=$filters['machine_type'] == 'GAS' ? 'selected' : ''?> value="GAS">GAS</option> 
+		            <option <?=$filters['machine_type'] == 'SEWERAGE' ? 'selected' : ''?> value="SEWERAGE">SEWERAGE</option>
 		          </select>
 		        </div> 
 		         <div class="form-group">
 		          <select name="filters[machine_status]" class="form-control chosen-select">
 		            <option disabled="true" selected="true">Select Machine Status</option>
-		            <option value="1">Enabled</option>
-		            <option value="0">Disabled</option>
+		            <option <?=$filters['machine_status'] == 2 ? 'selected' : ''?> value="2">ALL</option> 
+		            <option <?=$filters['machine_status'] == 1 ? 'selected' : ''?> value="1">Enabled</option>
+		            <option <?=$filters['machine_status'] == 0 ? 'selected' : ''?> value="0">Disabled</option>
 		          </select>
 		        </div>
 		        <div class="form-group">
@@ -45,7 +36,8 @@
 		          </select>
 		        </div> 
 
-		        <input type="submit" name="generate_report" class="btn btn-success" value="Filter">
+		        <input type="submit" name="filter" class="btn btn-success" value="FILTER">
+		        <input type="submit" name="clear_filters" class="btn btn-danger" value="RESET">
 		      </form>
 		  </div>
 	</div> <!-- col-md-12 -->
@@ -92,12 +84,12 @@ $pagination = pagination_params($data);
 	// $page = isset($_GET['page_no']) ? $_GET['page_no'] : 1;
 	$next_page = $pagination['next_page'];
 	$current_page = $pagination['current_page'];
-	$previous_page = $pagination['previous_page'];
+	$previous_page = $pagination['previous_page']; 
 	$total_results = $pagination['total_results'];
 	
-		$pagination_params = [
+	$pagination_params = [
 			'filters' => isset($_GET['filters']) ? $_GET['filters'] : []
-		];
+	];
 
 	?>
 <nav aria-label="...">

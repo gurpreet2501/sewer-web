@@ -14,15 +14,25 @@ class Dashboard extends CI_Controller
 	function index()
 	{
 		$obj = new ApiClient();
-
+		
 	  $filters = [
 	  	'from_date' => date('Y-m-d 00:00:00'),
 	  	'to_date' => date('Y-m-d 23:59:59'),
-	  	'machine_type' => 'GAS',
-	  	'page_no' => isset($_GET['page_no']) ? $_GET['page_no'] : 1
+	  	'machine_type' => 'ALL',
+	  	'page_no' => isset($_GET['page_no']) ? $_GET['page_no'] : 1,
+	  	'machine_status' => 'ALL' //Enabled
 	  ];
 
+	  if(!isset($_GET['clear_filters'])){
 
+			  if(isset($_GET['filters']['machine_type']))
+			  	$filters['machine_type'] = $_GET['filters']['machine_type'];
+
+			 	if(isset($_GET['filters']['machine_status']))
+			  	$filters['machine_status'] = $_GET['filters']['machine_status'];
+			  
+	  }
+	
 		$resp  =  $obj->reset() 
                         ->set('object', 'machine')
                         ->set('api', 'view')
@@ -30,10 +40,13 @@ class Dashboard extends CI_Controller
                         	'token' => get_sessions_token(),
                         	'type' => $filters['machine_type'],
                         	'paginate' => true,
-                        	'page_no' => $filters['page_no']
+                        	'page_no' => $filters['page_no'],
+                        	'type' => $filters['machine_type'],
+                        	'status' => $filters['machine_status']
                         ])
-                        ->exec();  
-                
+                        ->exec();
+        
+         
     if(!$resp->success()) {
     	failure('Something wrong happened');
     	redirect('dashboard/index');
@@ -52,7 +65,8 @@ class Dashboard extends CI_Controller
 		$this->load->view('dashboard',[
 			'data' => $resp->response(),
 			'js_files' => $jsFiles,
-			'css_files' => $cssFiles
+			'css_files' => $cssFiles,
+			'filters' => $filters
 		]);
 	}
 }
