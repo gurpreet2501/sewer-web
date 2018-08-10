@@ -53,6 +53,7 @@
 		 		<tr>
 		 				<td align="center"><strong>#Serial</strong></td>
 		 				<td align="center"><strong>Name</strong></td>
+		 				<td align="center"><strong>Machine Type</strong></td>
 		 				<td align="center"><strong>Machine Status</strong></td>
 		 				<td align="center"><strong>Button Status</strong></td>
 		 				<td align="center"><strong>Blocked Status/Toggle</strong></td>
@@ -61,13 +62,18 @@
 			<tr>
 				<td align="center"><a href="<?=site_url('machine/details/'.$item->id)?>"><?=ucwords($item->machine_serial)?></a></td>
 				<td align="center"><?=$item->machine_name?></td>
+				<td align="center"><span class="label <?=$item->type == 'GAS' ? 'label-primary' : 'label-default'?>"><?=strtoupper($item->type)?></span></td>
 				<td align="center">
 					<input data-machine-serial="<?=trim($item->machine_serial)?>" id="machine_status_<?=$key?>" class="machine_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 
 						<?=($item->status ==1) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
 				</td>
 				<td  align="center">
-					<input data-machine-serial="<?=trim($item->machine_serial)?>" id="button_status_<?=$key?>" class="button_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 
-					<?=($item->button_status ==1) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
+					<?php if($item->type == 'GAS'): ?>
+							<input data-machine-serial="<?=trim($item->machine_serial)?>" id="button_status_<?=$key?>" class="button_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 
+							<?=($item->button_status ==1) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
+					<?php else: ?>
+						<?php  echo '-NA-';?>;		
+					<?php endif; ?>		
 						
 				</td>
 				<td  align="center">
