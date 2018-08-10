@@ -15,12 +15,19 @@ class Dashboard extends CI_Controller
 	{
 		$obj = new ApiClient();
 		
+		// Enable/disble mapping structure
+		// 0 - > disabled
+		// 1 - > enabled
+		// 2 - > all i.e. filter reset
+
 	  $filters = [
 	  	'from_date' => date('Y-m-d 00:00:00'),
 	  	'to_date' => date('Y-m-d 23:59:59'),
 	  	'machine_type' => 'ALL',
 	  	'page_no' => isset($_GET['page_no']) ? $_GET['page_no'] : 1,
-	  	'machine_status' => 'ALL' //Enabled
+	  	'machine_status' => 2, //Show All 
+	  	'button_status' => 2, //Show All
+	  	'blocked_machines' => 2 //Show All
 	  ];
 
 	  if(!isset($_GET['clear_filters'])){
@@ -30,6 +37,12 @@ class Dashboard extends CI_Controller
 
 			 	if(isset($_GET['filters']['machine_status']))
 			  	$filters['machine_status'] = $_GET['filters']['machine_status'];
+
+			  if(isset($_GET['filters']['blocked_machines']))
+			  	$filters['blocked_machines'] = $_GET['filters']['blocked_machines'];
+			  
+			  if(isset($_GET['filters']['button_status']))
+			  	$filters['button_status'] = $_GET['filters']['button_status'];
 			  
 	  }
 	
@@ -42,7 +55,9 @@ class Dashboard extends CI_Controller
                         	'paginate' => true,
                         	'page_no' => $filters['page_no'],
                         	'type' => $filters['machine_type'],
-                        	'status' => $filters['machine_status']
+                        	'status' => $filters['machine_status'],
+                        	'button_status' => $filters['button_status'],
+                        	'blocked' => $filters['blocked_machines']
                         ])
                         ->exec();
         

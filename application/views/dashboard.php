@@ -5,8 +5,8 @@
 		  <div class='filters'>
 		    <form class="form-inline" method="get">
 		        <div class="form-group">
-		        	<label>Machine Status</label>
-		          <select name="filters[machine_type]" class="form-control chosen-select">
+		        	<div><label >Machine Type</label></div>
+		          <select name="filters[machine_type]" id="test" class="form-control chosen-select">
 		            <option disabled="true" selected="true">Select Machine Type</option>
 		            <option <?=$filters['machine_type'] == 'ALL' ? 'selected' : ''?> value="ALL">ALL</option> 
 		            <option <?=$filters['machine_type'] == 'GAS' ? 'selected' : ''?> value="GAS">GAS</option> 
@@ -14,28 +14,32 @@
 		          </select>
 		        </div> 
 		         <div class="form-group">
+		         	<div><label >Machine Status</label></div>
 		          <select name="filters[machine_status]" class="form-control chosen-select">
-		            <option disabled="true" selected="true">Select Machine Status</option>
-		            <option <?=$filters['machine_status'] == 2 ? 'selected' : ''?> value="2">ALL</option> 
+		            <option disabled="true" >Select Machine Status</option>
+		            <option <?=$filters['machine_status'] == 2 ? 'selected' : ''?> selected="true" value="2">ALL</option> 
 		            <option <?=$filters['machine_status'] == 1 ? 'selected' : ''?> value="1">Enabled</option>
 		            <option <?=$filters['machine_status'] == 0 ? 'selected' : ''?> value="0">Disabled</option>
 		          </select>
 		        </div>
 		        <div class="form-group">
+		        	<div><label >Button Status</label></div>
 		          <select name="filters[button_status]" class="form-control chosen-select">
-		            <option disabled="true" selected="true">Select Button Status</option>
-		            <option value="1">Enabled</option>
-		            <option value="0">Disabled</option>
+		            <option disabled="true" >Select Button Status</option>
+		            <option <?=$filters['button_status'] == 2 ? 'selected' : ''?>selected="true" value="2">ALL</option>
+		            <option <?=$filters['button_status'] == 1 ? 'selected' : ''?> value="1">Enabled</option>
+		            <option <?=$filters['button_status'] == 0 ? 'selected' : ''?> value="0">Disabled</option>
 		          </select>
 		        </div>
 		        <div class="form-group">
-		          <select name="filters[blocked_status]" class="form-control chosen-select">
-		            <option disabled="true" selected="true">Select Blocked/Unblocked</option>
-		            <option value="1">Blocked</option>
-		            <option value="0">Unblocked</option>
+		        	<div><label >Machine Blocked Status </label></div>
+		          <select name="filters[blocked_machines]" class="form-control chosen-select">
+		            <option disabled="true">Select Blocked/Unblocked</option>
+		            <option <?=$filters['blocked_machines'] == 2 ? 'selected' : ''?>  selected="true" value="2">ALL</option>
+		            <option <?=$filters['blocked_machines'] == 1 ? 'selected' : ''?> value="1">Blocked</option>
+		            <option <?=$filters['blocked_machines'] == 0 ? 'selected' : ''?> value="0">Unblocked</option>
 		          </select>
 		        </div> 
-
 		        <input type="submit" name="filter" class="btn btn-success" value="FILTER">
 		        <input type="submit" name="clear_filters" class="btn btn-danger" value="RESET">
 		      </form>
