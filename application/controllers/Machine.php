@@ -21,16 +21,16 @@ class Machine extends CI_Controller
                 	'machine_id' => $id,
                 ])
                 ->exec();  
-          echo "<pre>";
-          print_r($resp);
-          exit;
+         
     if(!$resp->success()) {
     	failure('Something wrong happened');
     	redirect('dashboard/index');
     }
-		echo "<pre>";
-		print_r($id);
-		exit;
+	
+		$this->load->view('machine/details',[
+			'data' => $resp->response()
+		]);
+
 	}
 
 	function status_update()

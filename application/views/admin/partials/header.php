@@ -85,10 +85,7 @@ a:hover
                 <?php
                  if(user_role() == 'ADMIN')
                     $this->load->view('admin/partials/menu-admin');
-                  /*else
-                    $this->load->view('admin/partials/menu-operator');
-                   */ 
-                    // $this->load->view('admin/partials/menu-admin');
+                 
 
                 ?>
             </div>

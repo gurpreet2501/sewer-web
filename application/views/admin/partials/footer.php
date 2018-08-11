@@ -14,7 +14,9 @@
 
  <script src="<?=base_url('env.js?v='.$cacheVer);?>"></script> 
  <script src="<?=base_url('assets/js/env-support.js?v='.$cacheVer);?>"></script> 
- 
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2arTN-uT9iZ4kRF2AQR1JINIwphW8we8&callback=initMap">
+    </script>
 
  <script src="<?=base_url('assets/js/jquery.js?v='.$cacheVer);?>"></script>
  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>

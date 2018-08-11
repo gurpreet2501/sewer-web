@@ -5,12 +5,22 @@
 .input-error{
   border:1px solid red;
 }
+.map-overlay{
+  position: fixed;
+  top: 96px;
+  width: 366px;
+  background: #fff;
+  z-index: 3;
+  min-height: 300px;
+}
 
 .cash_transaction_forms input {
     width: 100% !important;
     position: relative;
 }
-
+#map{
+  position: unset !important;
+}
 .numerals-disp-block {
     color: #444;
     font-weight: bold;
