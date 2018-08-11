@@ -64,8 +64,7 @@
 				<td align="center"><?=$item->machine_name?></td>
 				<td align="center"><span class="label <?=$item->type == 'GAS' ? 'label-primary' : 'label-default'?>"><?=strtoupper($item->type)?></span></td>
 				<td align="center">
-					<input data-machine-serial="<?=trim($item->machine_serial)?>" id="machine_status_<?=$key?>" class="machine_status" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger" 
-						<?=($item->status ==1) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
+					<span class="label <?=$item->status == 1 ?  'label-success' : 'label-danger'?>"><?=$item->status ? 'ENABLED' : 'DISABLED'?></span>
 				</td>
 				<td  align="center">
 					<?php if($item->type == 'GAS'): ?>
