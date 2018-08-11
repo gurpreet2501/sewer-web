@@ -15,36 +15,10 @@
  <script src="<?=base_url('env.js?v='.$cacheVer);?>"></script> 
  <script src="<?=base_url('assets/js/env-support.js?v='.$cacheVer);?>"></script> 
 
- <script type="text/javascript">
-   
-      window.for_js = {};
-      <?php if(isset($for_js)): ?> 
-        window.for_js = <?=json_encode($for_js)?>; 
-      <?php endif; ?>
-      function v(key,_default){
-        if(window.for_js[key])
-          return window.for_js[key];
-        return _default;
-      }
-
-
- </script>
  <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2arTN-uT9iZ4kRF2AQR1JINIwphW8we8&callback=initMap">
     </script>
-<script>
-  console.log();
-    // Initialize and add the map
-    function initMap() {
-      // The location of Uluru
-      var uluru = {lat: v('latitude'), lng: v('longitude')};
-      // The map, centered at Uluru
-      var map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 16, center: uluru});
-      // The marker, positioned at Uluru
-      var marker = new google.maps.Marker({position: uluru, map: map});
-    }
-</script>
+
 
 
  <script src="<?=base_url('assets/js/jquery.js?v='.$cacheVer);?>"></script>

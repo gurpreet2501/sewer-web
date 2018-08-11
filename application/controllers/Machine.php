@@ -29,7 +29,7 @@ class Machine extends CI_Controller
 		 
 		$latitude = 00.00;
 		$longitude = 00.00;
-		
+
 		if(!empty($resp->response()->address)){
 			 $address = $resp->response()->address; 
 			 $latitude = $address->latitude;
@@ -37,12 +37,24 @@ class Machine extends CI_Controller
 		}
 
 
+    $jsFiles = [
+			base_url('assets/js/loadingoverlay.min.js'),
+			base_url('assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.js'),
+			base_url('assets/js/machine-btns-toggling.js'),
+		];
+
+		$cssFiles = [base_url('assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.css')];
+
+
 		$this->load->view('machine/details',[
 			'data' => $resp->response(),
 			'for_js' => [
 					'latitude' => $latitude,
 					'longitude' => $longitude
-			]
+			],
+			'js_files' => $jsFiles,
+			'css_files' => $cssFiles,
+
 		]);
 
 	}

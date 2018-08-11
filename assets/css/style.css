@@ -1,17 +1,20 @@
 .color-red{
   color:red;
 }
-
+  
 .input-error{
   border:1px solid red;
 }
-.map-overlay{
-  position: fixed;
-  top: 96px;
-  width: 366px;
-  background: #fff;
-  z-index: 3;
-  min-height: 300px;
+
+.map-overlay {
+    position: fixed;
+    top: 96px;
+    width: 366px;
+    background: #fff;
+    z-index: 3;
+    min-height: 300px;
+    border-radius: 12px;
+    box-shadow: 7px 4px 8px #ccc;
 }
 
 .cash_transaction_forms input {
