@@ -26,9 +26,23 @@ class Machine extends CI_Controller
     	failure('Something wrong happened');
     	redirect('dashboard/index');
     }
-	
+		 
+		$latitude = 00.00;
+		$longitude = 00.00;
+		
+		if(!empty($resp->response()->address)){
+			 $address = $resp->response()->address; 
+			 $latitude = $address->latitude;
+			 $longitude = $address->longitude;
+		}
+
+
 		$this->load->view('machine/details',[
-			'data' => $resp->response()
+			'data' => $resp->response(),
+			'for_js' => [
+					'latitude' => $latitude,
+					'longitude' => $longitude
+			]
 		]);
 
 	}
