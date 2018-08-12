@@ -34,8 +34,12 @@ class Machine extends CI_Controller
 			 $address = $resp->response()->address; 
 			 $latitude = $address->latitude;
 			 $longitude = $address->longitude;
+			 $complete_addr = $address->address.', '.$address->city.', '.$address->state.', '.$address->zip;
 		}
 
+		$icon = base_url('assets/images/open-icon-sewage.png');
+		if($resp->response()->status == 0)
+			$icon = base_url('assets/images/blocked-icon-sewage.png');
 
     $jsFiles = [
 			base_url('assets/js/loadingoverlay.min.js'),
@@ -44,13 +48,16 @@ class Machine extends CI_Controller
 		];
 
 		$cssFiles = [base_url('assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.css')];
-
-
+	
 		$this->load->view('machine/details',[
 			'data' => $resp->response(),
+		
 			'for_js' => [
 					'latitude' => $latitude,
-					'longitude' => $longitude
+					'longitude' => $longitude,
+					'complete_addr' => $complete_addr,
+					'marker_icon_sewerage' => $icon,
+					
 			],
 			'js_files' => $jsFiles,
 			'css_files' => $cssFiles,

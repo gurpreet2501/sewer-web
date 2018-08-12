@@ -1,4 +1,9 @@
-<?php $this->load->view('admin/partials/header'); ?>
+<?php $this->load->view('admin/partials/header'); 
+$get_parameters = http_build_query($get_request_params);
+echo "<pre>";
+print_r($get_parameters);
+exit;
+?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4">
@@ -70,7 +75,18 @@
       var map = new google.maps.Map(
           document.getElementById('map'), {zoom: 18, center: coordinates});
       // The marker, positioned at Uluru
-      var marker = new google.maps.Marker({position: coordinates, map: map});
+      var marker = new google.maps.Marker({position: coordinates, map: map, icon: v('marker_icon_sewerage'), title: 'Uluru (Ayers Rock)'});
+
+      var contentString = v('complete_addr');
+
+      var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+    
+      infowindow.open(map, marker);
+
+
     }
 
 
