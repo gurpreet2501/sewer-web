@@ -17,7 +17,7 @@
 						</tr>
 						<tr>
 							<td>Type</td>
-							<td><?=$data->type?></td>
+							<td><span class="label label-danger"><?=$data->type?></span></td>
 						</tr>
 						<tr>
 							<td>Status</td>
@@ -65,12 +65,12 @@
     // Initialize and add the map
     function initMap() {
       // The location of Uluru
-      var uluru = {lat: v('latitude'), lng: v('longitude')};
+     var coordinates = {lat: parseFloat(v('latitude')), lng: parseFloat(v('longitude'))};
       // The map, centered at Uluru
       var map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 17, center: uluru});
+          document.getElementById('map'), {zoom: 18, center: coordinates});
       // The marker, positioned at Uluru
-      var marker = new google.maps.Marker({position: uluru, map: map});
+      var marker = new google.maps.Marker({position: coordinates, map: map});
     }
 
 
