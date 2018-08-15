@@ -1,13 +1,13 @@
-<?php $this->load->view('admin/partials/header'); 
-$get_parameters = http_build_query($get_request_params);
-echo "<pre>";
-print_r($get_parameters);
-exit;
-?>
+<?php $this->load->view('admin/partials/header'); ?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4">
 				<div class="map-overlay">
+					<a href="#" onclick="goBack()">
+							<button class="btn btn-warning pull-right" type="button">
+							Back
+						</button>
+					</a>
 					<h4 class="text-center">
 						Machine Details
 					</h4>

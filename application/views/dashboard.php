@@ -5,6 +5,10 @@
 		  <div class='filters'>
 		    <form class="form-inline" method="get">
 		        <div class="form-group">
+		        	<div><label >Machine Serial</label></div>
+		          <input type="text" name="filters[machine_serial]" placeholder="Enter serial to search" value="<?=$filters['machine_serial']?>" /> 
+		        </div> 
+		        <div class="form-group">
 		        	<div><label >Machine Type</label></div>
 		          <select name="filters[machine_type]" id="test" class="form-control chosen-select">
 		            <option disabled="true" selected="true">Select Machine Type</option>

@@ -24,27 +24,33 @@ class Dashboard extends CI_Controller
 	  	'from_date' => date('Y-m-d 00:00:00'),
 	  	'to_date' => date('Y-m-d 23:59:59'),
 	  	'machine_type' => 'ALL',
+	  	'machine_serial' => '',
 	  	'page_no' => isset($_GET['page_no']) ? $_GET['page_no'] : 1,
 	  	'machine_status' => 2, //Show All 
 	  	'button_status' => 2, //Show All
 	  	'blocked_machines' => 2 //Show All
 	  ];
+	  
+	  if(isset($_GET['clear_filters']))
+	  	redirect('dashboard/index');
+	  
 
-	  if(!isset($_GET['clear_filters'])){
+	  if(isset($_GET['filters']['machine_type']))
+	  	$filters['machine_type'] = $_GET['filters']['machine_type'];
 
-			  if(isset($_GET['filters']['machine_type']))
-			  	$filters['machine_type'] = $_GET['filters']['machine_type'];
+	 	if(isset($_GET['filters']['machine_status']))
+	  	$filters['machine_status'] = $_GET['filters']['machine_status'];
 
-			 	if(isset($_GET['filters']['machine_status']))
-			  	$filters['machine_status'] = $_GET['filters']['machine_status'];
+	  if(isset($_GET['filters']['blocked_machines']))
+	  	$filters['blocked_machines'] = $_GET['filters']['blocked_machines'];
+	  
+	  if(isset($_GET['filters']['button_status']))
+	  	$filters['button_status'] = $_GET['filters']['button_status'];
 
-			  if(isset($_GET['filters']['blocked_machines']))
-			  	$filters['blocked_machines'] = $_GET['filters']['blocked_machines'];
-			  
-			  if(isset($_GET['filters']['button_status']))
-			  	$filters['button_status'] = $_GET['filters']['button_status'];
-			  
-	  }
+	  if(isset($_GET['filters']['machine_serial']))
+	  	$filters['machine_serial'] = $_GET['filters']['machine_serial'];
+	  
+
 	
 		$resp  =  $obj->reset() 
                         ->set('object', 'machine')
@@ -57,7 +63,8 @@ class Dashboard extends CI_Controller
                         	'type' => $filters['machine_type'],
                         	'status' => $filters['machine_status'],
                         	'button_status' => $filters['button_status'],
-                        	'blocked' => $filters['blocked_machines']
+                        	'blocked' => $filters['blocked_machines'],
+                        	'machine_serial' => $filters['machine_serial']
                         ])
                         ->exec();
         
