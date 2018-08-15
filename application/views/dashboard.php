@@ -61,6 +61,7 @@
 		 				<td align="center"><strong>Machine Status</strong></td>
 		 				<td align="center"><strong>Button Status</strong></td>
 		 				<td align="center"><strong>Blocked Status/Toggle</strong></td>
+		 				<td align="center"><strong>Action</strong></td>
 		 		</tr>
 		<?php foreach ($data->data as $key => $item):?>
 			<tr>
@@ -83,6 +84,8 @@
 					<input class="machine_blocked_status" data-machine-serial="<?=trim($item->machine_serial)?>" data-on="Unblocked" data-off="Blocked" data-onstyle="success" data-offstyle="danger" 
 					<?=($item->blocked == 0) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
 				</td>
+				<td align="center"><a href="<?=site_url('machine/delete/'.$item->id)?>"><button type='button' class=
+					"btn btn-default">Delete Machine</button></a></td>
 			</tr>
 		<?php endforeach ?>
 		 		

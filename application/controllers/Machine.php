@@ -65,7 +65,27 @@ class Machine extends CI_Controller
 		]);
 
 	}
+	function delete($id){
+			$obj = new ApiClient();
+			$resp  =  $obj->reset() 
+                ->set('object', 'machine')
+                ->set('api', 'delete_by_admin')
+                ->set('data',[
+                	'token' => get_sessions_token(),
+                	'machine_id' => $id,
+                ])
+                ->exec();  
+        
+    if(!$resp->success()) {
+    	failure('Something wrong happened');
+    	redirect('dashboard/index');
+    }
 
+    success('Machine deleted successfully');
+    redirect('dashboard/index');
+
+
+	}
 	function status_update()
 	{
 		
