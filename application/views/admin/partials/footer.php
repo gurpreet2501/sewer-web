@@ -30,6 +30,7 @@
  <script src="<?=base_url('assets/js/bootstrap.min.js?v='.$cacheVer);?>"></script>
  <script type="text/javascript" src="<?=base_url('assets/js/chosen.jquery.js?v='.$cacheVer)?>"></script>
  <script type="text/javascript" src="<?=base_url('assets/js/select2.js?v='.$cacheVer)?>"></script>
+ <script type="text/javascript" src="<?=base_url('assets/js/sweetalert2.js?v='.$cacheVer)?>"></script>
 
  <script type="text/javascript" src="<?=base_url('assets/js/jquery-validate.js?v='.$cacheVer)?>"></script>
 
@@ -78,6 +79,32 @@ jQuery(function(){
 function goBack() {
     window.history.back();
 }
+</script>
+
+<script type="text/javascript">
+  function delete_machine(machine_id){
+
+    swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+
+        
+        if (result.value) {
+          location.href=window.getBaseUrl()+'/machine/delete/'+machine_id;  
+          // swal(
+          //   'Deleted!',
+          //   'Your file has been deleted.',
+          //   'success'
+          // )
+        }
+      });
+  }
 </script>
 
 <div style='height:20px;'></div>  

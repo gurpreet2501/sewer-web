@@ -84,8 +84,8 @@
 					<input class="machine_blocked_status" data-machine-serial="<?=trim($item->machine_serial)?>" data-on="Unblocked" data-off="Blocked" data-onstyle="success" data-offstyle="danger" 
 					<?=($item->blocked == 0) ? 'checked' : ''?> data-toggle="toggle" data-onstyle="warning" data-offstyle="info" type="checkbox">
 				</td>
-				<td align="center"><a href="<?=site_url('machine/delete/'.$item->id)?>"><button type='button' class=
-					"btn btn-default">Delete Machine</button></a></td>
+				<td align="center"><button onclick="delete_machine(<?=$item->id?>)" type='button' class=
+					"btn btn-default delete-btn">Delete Machine</button></td>
 			</tr>
 		<?php endforeach ?>
 		 		
@@ -94,8 +94,9 @@
 	</div>
 </div>	
 <?php  
-$pagination = pagination_params($data);
+ 
 
+  $pagination = pagination_params($data);
 	
 	// $page = isset($_GET['page_no']) ? $_GET['page_no'] : 1;
 	$next_page = $pagination['next_page'];
@@ -124,4 +125,5 @@ $pagination = pagination_params($data);
  
   <div class="text-center">Total Results: <?=$total_results?></div>
 </nav>
+
 <?php $this->load->view('admin/partials/footer'); ?>

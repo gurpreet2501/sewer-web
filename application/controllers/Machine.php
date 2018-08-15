@@ -65,6 +65,7 @@ class Machine extends CI_Controller
 		]);
 
 	}
+	
 	function delete($id){
 			$obj = new ApiClient();
 			$resp  =  $obj->reset() 
